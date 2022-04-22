@@ -1,0 +1,7 @@
+parameters:
+    podcast.upload_path: '%kernel.project_dir%/uploads/podcasts'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true

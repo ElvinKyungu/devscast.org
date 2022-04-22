@@ -6,7 +6,7 @@ namespace Infrastructure\Authentication\Symfony\Security;
 
 use Domain\Authentication\Entity\User;
 use Domain\Authentication\Event\LoginAttemptsLimitReachedEvent;
-use Domain\Authentication\Service\LoginAttemptService;
+use Application\Authentication\Service\LoginAttemptService;
 use Infrastructure\Authentication\Exception\TooManyLoginAttemptsException;
 use Infrastructure\Authentication\Exception\UserBannedException;
 use Infrastructure\Authentication\Exception\UserNotFoundException;

@@ -6,7 +6,7 @@ namespace Infrastructure\Authentication\Symfony\Controller;
 
 use Application\Authentication\Command\ConfirmResetPasswordCommand;
 use Application\Authentication\Command\RequestResetPasswordCommand;
-use Domain\Authentication\Service\ResetPasswordService;
+use Application\Authentication\Service\ResetPasswordService;
 use Infrastructure\Authentication\Exception\ResetPasswordOngoingException;
 use Infrastructure\Authentication\Exception\ResetPasswordTokenExpiredException;
 use Infrastructure\Authentication\Exception\UserNotFoundException;
