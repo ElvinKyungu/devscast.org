@@ -39,8 +39,9 @@ trait BackupAuthTrait
     public function invalidateBackupCode(string $code): void
     {
         $backup_code = $this->getBackupCode();
-        $this->backup_codes = array_filter($this->getBackupCode(), function (string $c) use ($code) {
-            return $c !== $code;
-        });
+        $this->backup_codes = array_filter(
+            array: $this->getBackupCode(),
+            callback: fn (string $c) => $c !== $code
+        );
     }
 }

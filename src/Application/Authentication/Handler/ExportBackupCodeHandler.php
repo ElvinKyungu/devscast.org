@@ -29,6 +29,6 @@ final class ExportBackupCodeHandler
             $this->commandBus->dispatch(new RegenerateBackupCodeCommand($user));
         }
 
-        return implode("\n", $user->getBackupCode());
+        return implode(separator: \PHP_EOL, array: $user->getBackupCode());
     }
 }
