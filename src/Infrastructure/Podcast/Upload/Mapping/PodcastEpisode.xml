@@ -1,0 +1,4 @@
+<vich_uploader class="Domain\Podcast\Entity\PodcastEpisode">
+    <field mapping="podcast_episode_audio" name="audio_file" filename_property="audio_url" size="audio_size" mime_type="audio_type" />
+    <field mapping="podcast_episode_thumbnail" name="thumbnail_file" filename_property="thumbnail_url" size="thumbnail_size" dimensions="thumbnail_dimensions" mime_type="thumbnail_type" />
+</vich_uploader>

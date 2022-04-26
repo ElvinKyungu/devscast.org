@@ -69,14 +69,13 @@ final class LoginOAuthController extends AbstractController
                 domain: 'authentication'
             ));
 
-            // TODO redirect to profile
-            return $this->redirectToRoute('authentication_settings_index');
+            return $this->redirectToRoute('authentication_setting_index');
         } catch (UnsupportedOAuthServiceException) {
             throw new NotFoundHttpException();
         } catch (\Throwable $e) {
             $this->handleUnexpectedException($e);
 
-            return $this->redirectToRoute('authentication_settings_index');
+            return $this->redirectToRoute('authentication_setting_index');
         }
     }
 

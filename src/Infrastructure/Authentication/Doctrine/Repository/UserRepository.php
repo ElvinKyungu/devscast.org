@@ -1,7 +1,5 @@
 <?php
 
-/** @noinspection ALL */
-
 declare(strict_types=1);
 
 namespace Infrastructure\Authentication\Doctrine\Repository;
@@ -9,7 +7,7 @@ namespace Infrastructure\Authentication\Doctrine\Repository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Domain\Authentication\Entity\User;
-use Domain\Authentication\Repository\UserRepository as UserRepositoryInterface;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use Infrastructure\Shared\Doctrine\Repository\AbstractRepository;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

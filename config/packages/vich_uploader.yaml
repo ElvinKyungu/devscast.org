@@ -1,7 +1,23 @@
 vich_uploader:
     db_driver: orm
 
-    #mappings:
-    #    products:
-    #        uri_prefix: /images/products
-    #        upload_destination: '%kernel.project_dir%/public/images/products'
+    metadata:
+        type: xml
+        auto_detection: false # omit this line if the previously described auto-discovery is still needed
+        directories:
+            - { path: '%kernel.project_dir%/src/Infrastructure/Podcast/Upload/Mapping', namespace_prefix: 'Domain\Podcast\Entity' }
+
+    mappings:
+        podcast_episode_thumbnail:
+            uri_prefix: /uploads/thumbnails/podcast_episode
+            upload_destination: '%kernel.project_dir%/public/uploads/thumbnails/podcast_episode'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'slug', transliterate: true }
+
+        podcast_episode_audio:
+            uri_prefix: /podcasts/streaming/
+            upload_destination: '%podcast.upload_path%'
+            namer:
+                service: Vich\UploaderBundle\Naming\PropertyNamer
+                options: { property: 'slug', transliterate: true }

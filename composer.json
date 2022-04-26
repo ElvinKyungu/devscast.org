@@ -64,7 +64,7 @@
         "vich/uploader-bundle": "^1.19"
     },
     "require-dev": {
-        "dama/doctrine-test-bundle": "^6.7",
+        "dama/doctrine-test-bundle": "^7.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "hautelook/alice-bundle": "^2.10",
         "nelmio/alice": "^3.10",

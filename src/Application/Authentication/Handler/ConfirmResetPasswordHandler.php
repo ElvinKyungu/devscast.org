@@ -6,8 +6,8 @@ namespace Application\Authentication\Handler;
 
 use Application\Authentication\Command\ConfirmResetPasswordCommand;
 use Domain\Authentication\Entity\User;
-use Domain\Authentication\Repository\UserRepository;
-use Infrastructure\Authentication\Doctrine\Repository\ResetPasswordTokenRepository;
+use Domain\Authentication\Repository\ResetPasswordTokenRepositoryInterface;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use Infrastructure\Shared\Symfony\Mailer\Mailer;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
@@ -26,8 +26,8 @@ final class ConfirmResetPasswordHandler
         private readonly TranslatorInterface $translator,
         private readonly Mailer $mailer,
         private readonly UserPasswordHasherInterface $hasher,
-        private readonly UserRepository $userRepository,
-        private readonly ResetPasswordTokenRepository $tokenRepository
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly ResetPasswordTokenRepositoryInterface $tokenRepository
     ) {
     }
 

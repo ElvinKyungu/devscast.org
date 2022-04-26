@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Authentication\Exception;
 
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+
 /**
  * Erreur renvoyée lorsque l'on ne trouve pas
  * d'utilisateur correspondant à la réponse de l'OAUTH.
@@ -12,6 +15,21 @@ namespace Domain\Authentication\Exception;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-interface UserOAuthNotFoundException
+final class UserOAuthNotFoundException extends CustomUserMessageAuthenticationException
 {
+    /**
+     * UserOauthNotFoundException constructor.
+     *
+     * @author bernard-ng <bernard@devscast.tech>
+     */
+    public function __construct(
+        private readonly ResourceOwnerInterface $resourceOwner
+    ) {
+        parent::__construct(message: 'authentication.exceptions.oauth_user_not_found');
+    }
+
+    public function getResourceOwner(): ResourceOwnerInterface
+    {
+        return $this->resourceOwner;
+    }
 }

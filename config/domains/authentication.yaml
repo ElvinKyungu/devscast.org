@@ -5,6 +5,11 @@ services:
         autowire: true
         autoconfigure: true
 
+    # Doctrine Repositories
+    Domain\Authentication\Repository\UserRepositoryInterface: '@Infrastructure\Authentication\Doctrine\Repository\UserRepository'
+    Domain\Authentication\Repository\ResetPasswordTokenRepositoryInterface: '@Infrastructure\Authentication\Doctrine\Repository\ResetPasswordTokenRepository'
+    Domain\Authentication\Repository\LoginAttemptRepositoryInterface: '@Infrastructure\Authentication\Doctrine\Repository\LoginAttemptRepository'
+
     Infrastructure\Authentication\Doctrine\EventListener\UserEmptyBackupCodeListener:
         tags:
             -

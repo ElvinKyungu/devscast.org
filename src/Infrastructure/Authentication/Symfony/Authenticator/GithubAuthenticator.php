@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Infrastructure\Authentication\Symfony\Authenticator;
 
 use Domain\Authentication\Entity\User;
-use Domain\Authentication\Repository\UserRepository;
-use Infrastructure\Authentication\Exception\OAuthVerifiedEmailNotFoundException;
+use Domain\Authentication\Exception\OAuthVerifiedEmailNotFoundException;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use League\OAuth2\Client\Provider\GithubResourceOwner;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessToken;
@@ -27,7 +27,7 @@ final class GithubAuthenticator extends AbstractOAuthAuthenticator
 {
     protected string $serviceName = 'github';
 
-    public function getUserFromResourceOwner(ResourceOwnerInterface $resourceOwner, UserRepository $repository): ?User
+    public function getUserFromResourceOwner(ResourceOwnerInterface $resourceOwner, UserRepositoryInterface $repository): ?User
     {
         if (! ($resourceOwner instanceof GithubResourceOwner)) {
             throw new \RuntimeException('Expecting GithubResourceOwner as the first parameter');

@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace Domain\Authentication\Exception;
 
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+
 /**
- * Interface ResetPasswordOngoingException.
+ * Class ResetPasswordOngoingException.
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-interface ResetPasswordOngoingException
+final class ResetPasswordOngoingException extends CustomUserMessageAuthenticationException
 {
+    public function __construct()
+    {
+        parent::__construct(message: 'authentication.exceptions.reset_password_ongoing_request');
+    }
 }

@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
-use Domain\Shared\Repository\DataRepository;
+use Domain\Shared\Repository\DataRepositoryInterface;
 
 /**
  * @template E of object
@@ -21,7 +21,7 @@ use Domain\Shared\Repository\DataRepository;
  * @method E[]    findAll()
  * @method E[]    findBy(array $criteria, array $orderBy = null, ?int $limit = null, ?int $offset = null)
  */
-abstract class AbstractRepository extends ServiceEntityRepository implements DataRepository
+abstract class AbstractRepository extends ServiceEntityRepository implements DataRepositoryInterface
 {
     /**
      * @psalm-param class-string<E> $entityClass

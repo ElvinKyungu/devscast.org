@@ -8,7 +8,7 @@ use Application\Authentication\Command\RegisterLoginIpAddressCommand;
 use Application\Authentication\Service\LoginAttemptService;
 use Domain\Authentication\Entity\User;
 use Domain\Authentication\Event\LoginWithAnotherIpAddressEvent;
-use Domain\Authentication\Repository\UserRepository;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -23,7 +23,7 @@ final class RegisterLoginIpAddressHandler
     public function __construct(
         private readonly LoginAttemptService $loginAttempt,
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly UserRepository $repository
+        private readonly UserRepositoryInterface $repository
     ) {
     }
 

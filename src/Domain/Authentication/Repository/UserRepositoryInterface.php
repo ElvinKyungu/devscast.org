@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Domain\Authentication\Repository;
 
 use Domain\Authentication\Entity\User;
-use Domain\Shared\Repository\DataRepository;
+use Domain\Shared\Repository\DataRepositoryInterface;
 
 /**
- * Interface UserRepository.
+ * Interface UserRepositoryInterface.
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-interface UserRepository extends DataRepository
+interface UserRepositoryInterface extends DataRepositoryInterface
 {
     public function findForOauth(string $service, ?string $serviceId, ?string $email): ?User;
 

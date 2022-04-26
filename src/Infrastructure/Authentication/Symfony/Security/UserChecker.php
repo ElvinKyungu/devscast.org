@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Infrastructure\Authentication\Symfony\Security;
 
+use Application\Authentication\Service\LoginAttemptService;
 use Domain\Authentication\Entity\User;
 use Domain\Authentication\Event\LoginAttemptsLimitReachedEvent;
-use Application\Authentication\Service\LoginAttemptService;
-use Infrastructure\Authentication\Exception\TooManyLoginAttemptsException;
-use Infrastructure\Authentication\Exception\UserBannedException;
-use Infrastructure\Authentication\Exception\UserNotFoundException;
+use Domain\Authentication\Exception\TooManyLoginAttemptsException;
+use Domain\Authentication\Exception\UserBannedException;
+use Domain\Authentication\Exception\UserNotFoundException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

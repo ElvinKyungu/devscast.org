@@ -1,7 +1,5 @@
 <?php
 
-/** @noinspection ALL */
-
 declare(strict_types=1);
 
 namespace Infrastructure\Authentication\Doctrine\Repository;
@@ -10,7 +8,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Domain\Authentication\Entity\ResetPasswordToken;
 use Domain\Authentication\Entity\User;
-use Domain\Authentication\Repository\ResetPasswordTokenRepository as ResetPasswordTokenRepositoryInterface;
+use Domain\Authentication\Repository\ResetPasswordTokenRepositoryInterface;
 use Infrastructure\Shared\Doctrine\Repository\AbstractRepository;
 
 /**

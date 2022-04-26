@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Application\Authentication\Service;
 
 use Domain\Authentication\Entity\ResetPasswordToken;
-use Domain\Authentication\Repository\ResetPasswordTokenRepository;
-use Infrastructure\Authentication\Exception\ResetPasswordTokenExpiredException;
+use Domain\Authentication\Exception\ResetPasswordTokenExpiredException;
+use Domain\Authentication\Repository\ResetPasswordTokenRepositoryInterface;
 
 /**
  * Class ResetPasswordService.
@@ -18,7 +18,7 @@ final class ResetPasswordService
     private const EXPIRE_IN = 30;
 
     public function __construct(
-        private readonly ResetPasswordTokenRepository $tokenRepository,
+        private readonly ResetPasswordTokenRepositoryInterface $tokenRepository,
     ) {
     }
 

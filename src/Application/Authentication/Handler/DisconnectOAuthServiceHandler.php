@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Application\Authentication\Handler;
 
 use Application\Authentication\Command\DisconnectOAuthServiceCommand;
-use Domain\Authentication\Repository\UserRepository;
-use Infrastructure\Authentication\Exception\UnsupportedOAuthServiceException;
+use Domain\Authentication\Exception\UnsupportedOAuthServiceException;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 /**
@@ -24,7 +24,7 @@ final class DisconnectOAuthServiceHandler
     ];
 
     public function __construct(
-        private readonly UserRepository $repository
+        private readonly UserRepositoryInterface $repository
     ) {
     }
 

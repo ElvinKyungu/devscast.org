@@ -18,6 +18,12 @@ doctrine:
                 prefix: 'Domain\Authentication\Entity'
                 alias: Authentication
                 is_bundle: false
+            Domain\Podcast\Entity:
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Podcast/Doctrine/Mapping'
+                prefix: 'Domain\Podcast\Entity'
+                alias: Podcast
+                is_bundle: false
 
 when@test:
     doctrine:

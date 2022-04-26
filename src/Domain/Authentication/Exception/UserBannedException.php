@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace Domain\Authentication\Exception;
 
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+
 /**
- * Interface UserBannedException.
+ * Class UserBannedException.
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-interface UserBannedException
+final class UserBannedException extends CustomUserMessageAuthenticationException
 {
+    public function __construct()
+    {
+        parent::__construct(message: 'authentication.exceptions.user_banned');
+    }
 }

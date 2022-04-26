@@ -23,6 +23,7 @@ final class StreamingController extends AbstractController
     {
         try {
             $path = strval($this->getParameter('podcast.upload_path'));
+
             return new BinaryFileResponse("{$path}/{$filename}");
         } catch (\Throwable $e) {
             $this->logger->error($e->getMessage(), $e->getTrace());

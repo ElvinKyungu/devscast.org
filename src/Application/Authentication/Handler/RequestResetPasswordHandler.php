@@ -7,10 +7,10 @@ namespace Application\Authentication\Handler;
 use Application\Authentication\Command\RequestResetPasswordCommand;
 use Domain\Authentication\Entity\ResetPasswordToken;
 use Domain\Authentication\Entity\User;
-use Domain\Authentication\Repository\ResetPasswordTokenRepository;
-use Domain\Authentication\Repository\UserRepository;
-use Infrastructure\Authentication\Exception\ResetPasswordOngoingException;
-use Infrastructure\Authentication\Exception\UserNotFoundException;
+use Domain\Authentication\Exception\ResetPasswordOngoingException;
+use Domain\Authentication\Exception\UserNotFoundException;
+use Domain\Authentication\Repository\ResetPasswordTokenRepositoryInterface;
+use Domain\Authentication\Repository\UserRepositoryInterface;
 use Infrastructure\Shared\Symfony\Mailer\Mailer;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
@@ -28,8 +28,8 @@ final class RequestResetPasswordHandler
 
     public function __construct(
         private readonly Mailer $mailer,
-        private readonly ResetPasswordTokenRepository $tokenRepository,
-        private readonly UserRepository $userRepository,
+        private readonly ResetPasswordTokenRepositoryInterface $tokenRepository,
+        private readonly UserRepositoryInterface $userRepository,
         private readonly TranslatorInterface $translator
     ) {
     }
