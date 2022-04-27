@@ -11,9 +11,14 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-class Status
+final class Status implements \Stringable
 {
     public const STATUS = ['draft', 'published', 'reviewing'];
+    public const STATUS_CHOICES = [
+        'draft' => 'draft',
+        'published' => 'published',
+        'reviewing' => 'reviewing',
+    ];
 
     private readonly string $status;
 
@@ -26,6 +31,26 @@ class Status
     public function __toString(): string
     {
         return $this->status;
+    }
+
+    public static function fromString(string $status): self
+    {
+        return new self($status);
+    }
+
+    public static function draft(): self
+    {
+        return new self('draft');
+    }
+
+    public static function published(): self
+    {
+        return new self('published');
+    }
+
+    public static function reviewing(): self
+    {
+        return new self('reviewing');
     }
 
     public function equals(string|self $status): bool

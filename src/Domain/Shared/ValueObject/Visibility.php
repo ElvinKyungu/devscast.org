@@ -11,21 +11,46 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-class Visibility
+final class Visibility implements \Stringable
 {
-    public const VISIBILITY_LEVELS = ['public', 'private', 'unlisted'];
+    public const VISIBILITIES = ['public', 'private', 'unlisted'];
+    public const VISIBILITIES_CHOICES = [
+        'public' => 'public',
+        'private' => 'private',
+        'unlisted' => 'unlisted',
+    ];
 
     private readonly string $visibility;
 
-    public function __construct(string $visibility)
+    private function __construct(string $visibility)
     {
-        Assert::inArray($visibility, self::VISIBILITY_LEVELS);
+        Assert::inArray($visibility, self::VISIBILITIES);
         $this->visibility = $visibility;
     }
 
     public function __toString(): string
     {
         return $this->visibility;
+    }
+
+    public static function private(): self
+    {
+        return new self('private');
+    }
+
+    public static function public(): self
+    {
+        return new self('public');
+    }
+
+    public static function unlisted(): self
+    {
+        return new self('unlisted');
+    }
+
+    public static function fromString(string $visibility): self
+    {
+        return new self($visibility);
     }
 
     public function equals(string|self $visibility): bool

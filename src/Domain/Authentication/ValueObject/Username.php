@@ -11,15 +11,15 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Username
+final class Username implements \Stringable
 {
     private const MIN_LENGTH = 5;
 
     private const FORMAT = '/^[a-z\d_\-]+$/';
 
-    private readonly ?string $username;
+    private readonly string $username;
 
-    public function __construct(string $username)
+    private function __construct(string $username)
     {
         Assert::notEmpty($username, 'authentication.validations.empty_username');
         Assert::minLength($username, self::MIN_LENGTH, 'authentication.validations.short_username');
@@ -31,6 +31,11 @@ final class Username
     public function __toString(): string
     {
         return $this->username;
+    }
+
+    public static function fromString(string $username): self
+    {
+        return new self($username);
     }
 
     public function equals(string|self $username): bool

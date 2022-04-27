@@ -7,6 +7,7 @@ namespace Infrastructure\Shared\Symfony\Form\ValueObject;
 use Domain\Shared\ValueObject\Visibility;
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,15 +18,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class VisibilityType extends ChoiceType implements DataMapperInterface
 {
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder->add('visibility', ChoiceType::class, [
+            'multiple' => false,
+            'choices' => Visibility::VISIBILITIES_CHOICES,
+        ])->setDataMapper($this);
+    }
+
     public function configureOptions(OptionsResolver $resolver): OptionsResolver
     {
         parent::configureOptions($resolver);
         $resolver->setDefaults([
-            'attr' => [
-                'is' => 'app-select-choices',
-            ],
             'data_class' => Visibility::class,
-            'choices' => Visibility::VISIBILITY_LEVELS,
             'empty_data' => null,
         ]);
 
@@ -35,7 +40,7 @@ final class VisibilityType extends ChoiceType implements DataMapperInterface
     /**
      * @param Visibility $viewData
      */
-    public function mapDataToForms(mixed $viewData, \Traversable $forms)
+    public function mapDataToForms(mixed $viewData, \Traversable $forms): void
     {
         $forms = iterator_to_array($forms);
         $forms['visibility']->setData((string) $viewData);
@@ -44,11 +49,11 @@ final class VisibilityType extends ChoiceType implements DataMapperInterface
     /**
      * @param Visibility $viewData
      */
-    public function mapFormsToData(\Traversable $forms, mixed &$viewData)
+    public function mapFormsToData(\Traversable $forms, mixed &$viewData): void
     {
         $forms = iterator_to_array($forms);
         try {
-            $viewData = new Visibility(strval($forms['visibility']->getData()));
+            $viewData = Visibility::fromString(strval($forms['visibility']->getData()));
         } catch (\InvalidArgumentException $e) {
             $forms['visibility']->addError(new FormError($e->getMessage()));
         }

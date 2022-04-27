@@ -14,9 +14,9 @@ use Domain\Shared\ValueObject\Visibility;
  */
 trait VisibilityTrait
 {
-    private ?Status $status = null;
+    private Status $status;
 
-    private ?Visibility $visibility = null;
+    private Visibility $visibility;
 
     public function isAccessible(): bool
     {
@@ -24,24 +24,24 @@ trait VisibilityTrait
             $this->visibility->equals('public');
     }
 
-    public function getStatus(): ?Status
+    public function getStatus(): Status
     {
         return $this->status;
     }
 
-    public function setStatus(?Status $status): self
+    public function setStatus(Status $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getVisibility(): ?Visibility
+    public function getVisibility(): Visibility
     {
         return $this->visibility;
     }
 
-    public function setVisibility(?Visibility $visibility): self
+    public function setVisibility(Visibility $visibility): self
     {
         $this->visibility = $visibility;
 

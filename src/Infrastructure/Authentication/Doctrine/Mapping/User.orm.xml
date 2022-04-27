@@ -19,7 +19,7 @@
         </id>
 
         <field name="name" type="string" length="80" nullable="true"/>
-        <field name="username" type="string" length="30"/>
+        <embedded name="username" class="Domain\Authentication\ValueObject\Username" use-column-prefix="false" />
         <field name="job_title" type="string" length="150" nullable="true"/>
         <field name="biography" type="text" nullable="true"/>
         <field name="gender" type="string" column-definition="ENUM('M', 'F', 'O')">

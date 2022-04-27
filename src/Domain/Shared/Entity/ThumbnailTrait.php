@@ -18,7 +18,7 @@ trait ThumbnailTrait
 
     private ?string $thumbnail_url = null;
 
-    private ?float $thumbnail_size = null;
+    private ?int $thumbnail_size = null;
 
     private ?array $thumbnail_dimensions = [];
 

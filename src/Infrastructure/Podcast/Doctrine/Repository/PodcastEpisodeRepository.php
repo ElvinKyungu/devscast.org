@@ -25,12 +25,15 @@ final class PodcastEpisodeRepository extends AbstractRepository implements Podca
 
     public function findAvailableForFeed(): array
     {
-        return $this->createQueryBuilder('pe')
+        /** @var PodcastEpisode[] $result */
+        $result = $this->createQueryBuilder('pe')
             ->where('pe.status = :status')
             ->andWhere('pe.visibility = :visibility')
-            ->setParameter('status', new Status('published'))
-            ->setParameter('visibility', new Visibility('public'))
+            ->setParameter('status', Status::published())
+            ->setParameter('visibility', Visibility::public())
             ->getQuery()
             ->getResult();
+
+        return $result;
     }
 }
