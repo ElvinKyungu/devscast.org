@@ -13,4 +13,5 @@ use Domain\Shared\Repository\DataRepositoryInterface;
  */
 interface PodcastEpisodeRepositoryInterface extends DataRepositoryInterface
 {
+    public function findAvailableForFeed(): array;
 }

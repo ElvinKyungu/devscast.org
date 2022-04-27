@@ -1,0 +1,12 @@
+podcast:
+    titles:
+        index: Tous les podcasts
+        single: 'Podcast : %title%'
+    forms:
+        labels: ~
+        placeholders: ~
+    flashes: ~
+    validations: ~
+    exceptions: ~
+    mails:
+        subjects: ~

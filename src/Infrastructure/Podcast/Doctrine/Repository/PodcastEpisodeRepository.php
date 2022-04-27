@@ -7,6 +7,8 @@ namespace Infrastructure\Podcast\Doctrine\Repository;
 use Doctrine\Persistence\ManagerRegistry;
 use Domain\Podcast\Entity\PodcastEpisode;
 use Domain\Podcast\Repository\PodcastEpisodeRepositoryInterface;
+use Domain\Shared\ValueObject\Status;
+use Domain\Shared\ValueObject\Visibility;
 use Infrastructure\Shared\Doctrine\Repository\AbstractRepository;
 
 /**
@@ -19,5 +21,16 @@ final class PodcastEpisodeRepository extends AbstractRepository implements Podca
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, PodcastEpisode::class);
+    }
+
+    public function findAvailableForFeed(): array
+    {
+        return $this->createQueryBuilder('pe')
+            ->where('pe.status = :status')
+            ->andWhere('pe.visibility = :visibility')
+            ->setParameter('status', new Status('published'))
+            ->setParameter('visibility', new Visibility('public'))
+            ->getQuery()
+            ->getResult();
     }
 }
