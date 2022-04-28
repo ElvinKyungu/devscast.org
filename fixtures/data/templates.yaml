@@ -2,6 +2,7 @@ Domain\Authentication\Entity\User:
     user (template):
         name: <name()>
         username (unique): <userName()>
+        pronouns: <randomElement(['She\Her', 'He\Him', 'They\Their'])>
         job_title: <jobTitle()>
         biography: <realText(500)>
         gender: <randomElement(['M', 'F', 'O'])>

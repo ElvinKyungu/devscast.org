@@ -35,6 +35,12 @@ authentication:
         2fa_settings_updated_successfully: Les paramètres d'authentification à facteur double ont bien été modifié
     validations:
         password_must_match: Les deux mots de passe ne sont pas identiques !
+        empty_role: Veuillez définir au moins un rôle
+        invalid_role: Désolé ce role n'est pas reconnu
+        empty_username: Le nom d'utilisateur ne doit pas être vide
+        invalid_username_pattern: Le nom d'utilisateur doit contenir uniquement des lettres, des chiffres, des points(.) et underscores (_)
+        short_username: le nom d'utilisateur doit avoir au moins 5 caractères
+        long_username: le nom d'utilisateur ne doit pas dépasser 30 caractères
     exceptions:
         user_not_found: Désolé cet adresse email, ne correspond à aucun de nos enregistrements.
         user_banned: Désolé ce compte a été bloqué.

@@ -1,2 +1,6 @@
 include:
     - ../../fixtures/data/templates.yaml
+
+Domain\Authentication\Entity\User:
+    user_oauth_google (extends user):
+        google_id: <r>

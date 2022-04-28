@@ -24,8 +24,9 @@ class Roles implements \Stringable
 
     private function __construct(array $roles = ['ROLE_USER'])
     {
+        Assert::notEmpty($roles, 'authentication.validations.empty_roles');
         foreach ($roles as $role) {
-            Assert::inArray($role, self::ROLES);
+            Assert::inArray($role, self::ROLES, 'authentication.validations.invalid_roles');
         }
 
         $roles[] = 'ROLE_USER';
@@ -60,10 +61,10 @@ class Roles implements \Stringable
     public function equals(array|self $roles): bool
     {
         if ($roles instanceof self) {
-            return empty(array_diff($this->roles, $roles->roles));
+            return $roles->roles === $this->roles;
         }
 
-        return empty(array_diff($this->roles, $roles));
+        return $roles === $this->roles;
     }
 
     public function contains(string $role): bool
