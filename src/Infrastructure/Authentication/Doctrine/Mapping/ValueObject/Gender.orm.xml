@@ -4,7 +4,11 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="Domain\Authentication\ValueObject\Username">
-        <field name="username" type="string" length="30"/>
+    <embeddable name="Domain\Authentication\ValueObject\Gender">
+        <field name="gender" type="string" column-definition="ENUM('M', 'F', 'O')">
+            <options>
+                <option name="default">M</option>
+            </options>
+        </field>
     </embeddable>
 </doctrine-mapping>

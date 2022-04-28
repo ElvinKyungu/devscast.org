@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Gender implements \Stringable
+class Gender implements \Stringable
 {
     public const GENDERS = ['M', 'F', 'O'];
     public const GENDERS_CHOICES = [

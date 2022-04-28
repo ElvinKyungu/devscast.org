@@ -12,17 +12,33 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
+            # value object mappings
+            Domain\Shared\ValueObject:
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Shared/Doctrine/Mapping/ValueObject'
+                prefix: 'Domain\Shared\ValueObject'
+                is_bundle: false
+            Domain\Authentication\ValueObject:
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Authentication/Doctrine/Mapping/ValueObject'
+                prefix: 'Domain\Authentication\ValueObject'
+                is_bundle: false
+            Domain\Podcast\ValueObject:
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Podcast/Doctrine/Mapping/ValueObject'
+                prefix: 'Domain\Podcast\ValueObject'
+                is_bundle: false
+
+            # entity mappings
             Domain\Authentication\Entity:
                 type: xml
-                dir: '%kernel.project_dir%/src/Infrastructure/Authentication/Doctrine/Mapping'
+                dir: '%kernel.project_dir%/src/Infrastructure/Authentication/Doctrine/Mapping/Entity'
                 prefix: 'Domain\Authentication\Entity'
-                alias: Authentication
                 is_bundle: false
             Domain\Podcast\Entity:
                 type: xml
-                dir: '%kernel.project_dir%/src/Infrastructure/Podcast/Doctrine/Mapping'
+                dir: '%kernel.project_dir%/src/Infrastructure/Podcast/Doctrine/Mapping/Entity'
                 prefix: 'Domain\Podcast\Entity'
-                alias: Podcast
                 is_bundle: false
 
 when@test:

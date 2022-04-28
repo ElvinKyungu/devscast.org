@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Visibility implements \Stringable
+class Visibility implements \Stringable
 {
     public const VISIBILITIES = ['public', 'private', 'unlisted'];
     public const VISIBILITIES_CHOICES = [

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Domain\Podcast\Entity\PodcastCollection" repository-class="Infrastructure\Authentication\Doctrine\Repository\PodcastCollectionRepository" table="podcast_collection">
+    <entity name="Domain\Podcast\Entity\PodcastEpisode" repository-class="Infrastructure\Authentication\Doctrine\Repository\PodcastEpisodeRepository" table="podcast_episode">
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="setCreatedAtOnPrePersist"/>
             <lifecycle-callback type="postUpdate" method="setUpdatedAtOnPostUpdate"/>
@@ -13,5 +13,14 @@
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY"/>
         </id>
+
+        <!-- value object -->
+        <embedded name="episode_type" class="Domain\Podcast\ValueObject\EpisodeType" use-column-prefix="false"/>
+        <embedded name="status" class="Domain\Shared\ValueObject\Status" use-column-prefix="false"/>
+        <embedded name="visibility" class="Domain\Shared\ValueObject\Visibility" use-column-prefix="false"/>
+
+        <!-- Timestamp -->
+        <field name="created_at" type="datetime_immutable"/>
+        <field name="updated_at" type="datetime_immutable" nullable="true"/>
     </entity>
 </doctrine-mapping>

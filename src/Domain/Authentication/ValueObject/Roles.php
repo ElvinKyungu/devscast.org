@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Roles implements \Stringable
+class Roles implements \Stringable
 {
     public const ROLES = ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUPER_ADMIN'];
     public const ROLES_CHOICES = [

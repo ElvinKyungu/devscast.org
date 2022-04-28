@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Domain\Podcast\Entity;
 
+use Domain\Shared\Entity\IdentityTrait;
+use Domain\Shared\Entity\TimestampTrait;
+
 /**
  * Class PodcastCollection.
  *
@@ -11,4 +14,6 @@ namespace Domain\Podcast\Entity;
  */
 class PodcastCollection
 {
+    use IdentityTrait;
+    use TimestampTrait;
 }

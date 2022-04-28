@@ -4,7 +4,11 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="Domain\Authentication\ValueObject\Username">
-        <field name="username" type="string" length="30"/>
+    <embeddable name="Domain\Shared\ValueObject\Visibility">
+        <field name="visibility" column-definition="ENUM('public', 'private', 'unlisted')">
+            <options>
+                <option name="default">private</option>
+            </options>
+        </field>
     </embeddable>
 </doctrine-mapping>

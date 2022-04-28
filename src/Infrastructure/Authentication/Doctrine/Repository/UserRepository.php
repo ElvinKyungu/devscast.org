@@ -72,7 +72,7 @@ final class UserRepository extends AbstractRepository implements UserRepositoryI
         try {
             /** @var User|null $result */
             $result = $this->createQueryBuilder('u')
-                ->where('u.username = :username')
+                ->where('u.username.username = :username')
                 ->setParameter('username', $username)
                 ->setMaxResults(1)
                 ->getQuery()
@@ -90,7 +90,7 @@ final class UserRepository extends AbstractRepository implements UserRepositoryI
             /** @var User|null $result */
             $result = $this->createQueryBuilder('u')
                 ->where('LOWER(u.email) = :identifier')
-                ->orWhere('LOWER(u.username) = :identifier')
+                ->orWhere('LOWER(u.username.username) = :identifier')
                 ->setParameter('identifier', mb_strtolower($emailOrUsername))
                 ->setMaxResults(1)
                 ->getQuery()

@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Status implements \Stringable
+class Status implements \Stringable
 {
     public const STATUS = ['draft', 'published', 'reviewing'];
     public const STATUS_CHOICES = [

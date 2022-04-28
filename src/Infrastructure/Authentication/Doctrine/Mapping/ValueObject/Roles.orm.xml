@@ -4,7 +4,7 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="Domain\Authentication\ValueObject\Username">
-        <field name="username" type="string" length="30"/>
+    <embeddable name="Domain\Authentication\ValueObject\Roles">
+        <field name="roles" type="json"/>
     </embeddable>
 </doctrine-mapping>

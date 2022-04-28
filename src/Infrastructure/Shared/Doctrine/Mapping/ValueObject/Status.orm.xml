@@ -4,7 +4,11 @@
                   xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="Domain\Authentication\ValueObject\Username">
-        <field name="username" type="string" length="30"/>
+    <embeddable name="Domain\Shared\ValueObject\Status">
+        <field name="status" column-definition="ENUM('draft', 'published', 'reviewing')">
+            <options>
+                <option name="default">draft</option>
+            </options>
+        </field>
     </embeddable>
 </doctrine-mapping>

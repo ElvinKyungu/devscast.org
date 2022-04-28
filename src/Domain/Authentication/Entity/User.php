@@ -38,6 +38,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, GoogleT
 
     private Gender $gender;
 
+    private ?string $pronouns = null;
+
     private ?string $email = null;
 
     private ?string $phone_number = null;

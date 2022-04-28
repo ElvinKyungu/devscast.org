@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @author bernard-ng <bernard@devscast.tech>
  */
-final class Username implements \Stringable
+class Username implements \Stringable
 {
     private const MIN_LENGTH = 5;
 
